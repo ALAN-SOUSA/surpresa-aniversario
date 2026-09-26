@@ -8,6 +8,7 @@
 <style>
 *{box-sizing:border-box}
 
+
 html,body{
   margin:0;
   width:100%;
@@ -520,92 +521,66 @@ body{
 
 <script>
 
-const overlay = document.getElementById("overlay");
-const confetti = document.getElementById("confetti");
+  const overlay = document.getElementById("overlay");
+  const confetti = document.getElementById("confetti");
 
-function launchConfetti(){
+  const musica = new Audio("merry-go-round-of-life.mp3");
+  musica.preload = "auto";
 
-  confetti.innerHTML = "";
+  function launchConfetti(){
+    confetti.innerHTML="";
 
-  const colors = [
-    "#ff4fa3",
-    "#ff8cc6",
-    "#ffd166",
-    "#fff",
-    "#c77dff"
-  ];
+    const colors=["#ff4fa3","#ff8cc6","#ffd166","#fff","#c77dff"];
 
-  for(let i = 0; i < 110; i++){
+    for(let i=0;i<110;i++){
+      const el=document.createElement("span");
+      el.className="conf";
+      el.style.left=Math.random()*100+"vw";
+      el.style.setProperty("--x",(Math.random()*260-130)+"px");
+      el.style.animationDuration=(2.8+Math.random()*2.7)+"s";
+      el.style.animationDelay=(Math.random()*.5)+"s";
+      el.style.background=colors[Math.floor(Math.random()*colors.length)];
 
-    const el = document.createElement("span");
+      if(Math.random()>.55){
+        el.style.borderRadius="50%";
+      }
 
-    el.className = "conf";
-
-    el.style.left = Math.random() * 100 + "vw";
-
-    el.style.setProperty(
-      "--x",
-      (Math.random() * 260 - 130) + "px"
-    );
-
-    el.style.animationDuration =
-      (2.8 + Math.random() * 2.7) + "s";
-
-    el.style.animationDelay =
-      (Math.random() * .5) + "s";
-
-    el.style.background =
-      colors[Math.floor(Math.random() * colors.length)];
-
-    if(Math.random() > .55){
-      el.style.borderRadius = "50%";
+      confetti.appendChild(el);
     }
 
-    confetti.appendChild(el);
+    setTimeout(()=>confetti.innerHTML="",6000);
   }
 
-  setTimeout(() => {
-    confetti.innerHTML = "";
-  }, 6000);
-}
-
-
-function closePopup(){
-  overlay.classList.remove("show");
-}
-
-
-document.getElementById("openBtn").onclick = () => {
-
-  overlay.classList.add("show");
-
-  launchConfetti();
-
-};
-
-
-document.getElementById("closeBtn").onclick = closePopup;
-
-document.getElementById("xBtn").onclick = closePopup;
-
-
-overlay.onclick = e => {
-
-  if(e.target === overlay){
-    closePopup();
+  function closePopup(){
+    overlay.classList.remove("show");
   }
 
-};
+  document.getElementById("openBtn").onclick = () => {
 
+    musica.currentTime = 0;
 
-document.onkeydown = e => {
+    musica.play().catch(error => {
+      console.log("Não foi possível iniciar a música:", error);
+    });
 
-  if(e.key === "Escape"){
-    closePopup();
-  }
+    overlay.classList.add("show");
+    launchConfetti();
+  };
 
-};
+  document.getElementById("closeBtn").onclick=closePopup;
+  document.getElementById("xBtn").onclick=closePopup;
 
+  overlay.onclick=e=>{
+    if(e.target===overlay){
+      closePopup();
+    }
+  };
+
+  document.onkeydown=e=>{
+    if(e.key==="Escape"){
+      closePopup();
+    }
+  };
 </script>
 
 </body>
