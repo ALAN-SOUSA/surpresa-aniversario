@@ -524,12 +524,20 @@ body{
   const overlay = document.getElementById("overlay");
   const confetti = document.getElementById("confetti");
 
-  const musica = new Audio("merry-go-round-of-life.mp3");
-    musica.preload = "auto";
-    
+  const musica = new Audio("./merry-go-round-of-life.mp3");
 
-  function launchConfetti(){
-    confetti.innerHTML="";
+    document.getElementById("openBtn").onclick = async () => {
+    
+      try {
+        await musica.play();
+        console.log("🎵 Música iniciou!");
+      } catch (error) {
+        console.error("❌ Erro ao tocar:", error);
+      }
+    
+      overlay.classList.add("show");
+      launchConfetti();
+    };
 
     const colors=["#ff4fa3","#ff8cc6","#ffd166","#fff","#c77dff"];
 
