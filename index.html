@@ -175,10 +175,46 @@ body{
 }
 
 .gift{
-  font-size:22px;
+  display:inline-block;
+  font-size:24px;
   margin-right:9px;
+  animation: giftBounce 1.8s ease-in-out infinite;
+  transform-origin:center bottom;
 }
 
+@keyframes giftBounce{
+  0%, 100%{
+    transform:translateY(0) rotate(0deg) scale(1);
+  }
+
+  10%{
+    transform:translateY(-4px) rotate(-12deg) scale(1.05);
+  }
+
+  20%{
+    transform:translateY(-10px) rotate(14deg) scale(1.15);
+  }
+
+  30%{
+    transform:translateY(-5px) rotate(-12deg) scale(1.1);
+  }
+
+  40%{
+    transform:translateY(0) rotate(10deg) scale(1.05);
+  }
+
+  48%{
+    transform:translateY(-3px) rotate(-6deg) scale(1.02);
+  }
+
+  55%{
+    transform:translateY(0) rotate(0deg) scale(1);
+  }
+
+  100%{
+    transform:translateY(0) rotate(0deg) scale(1);
+  }
+}
 
 /* =========================
    POPUP
@@ -524,20 +560,12 @@ body{
   const overlay = document.getElementById("overlay");
   const confetti = document.getElementById("confetti");
 
-  const musica = new Audio("./merry-go-round-of-life.mp3");
+  const musica = new Audio("merry-go-round-of-life.mp3");
+    musica.preload = "auto";
+    
 
-    document.getElementById("openBtn").onclick = async () => {
-    
-      try {
-        await musica.play();
-        console.log("🎵 Música iniciou!");
-      } catch (error) {
-        console.error("❌ Erro ao tocar:", error);
-      }
-    
-      overlay.classList.add("show");
-      launchConfetti();
-    };
+  function launchConfetti(){
+    confetti.innerHTML="";
 
     const colors=["#ff4fa3","#ff8cc6","#ffd166","#fff","#c77dff"];
 
