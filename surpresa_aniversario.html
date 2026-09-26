@@ -4,232 +4,609 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Uma surpresa 💗</title>
+
 <style>
 *{box-sizing:border-box}
-html,body{margin:0;width:100%;height:100%;overflow:hidden}
-body{font-family:Arial,sans-serif;background:#160912;color:#fff}
+
+html,body{
+  margin:0;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+}
+
+body{
+  font-family:Arial,sans-serif;
+  background:#160912;
+  color:#fff;
+}
 
 .page{
-  position:fixed; inset:0;
+  position:fixed;
+  inset:0;
   background-image:
     linear-gradient(rgba(20,5,24,.14),rgba(20,4,22,.48)),
     url("foto.webp");
   background-size:cover;
   background-position:center center;
 }
+
 .page:after{
-  content:"";position:absolute;inset:0;
-  background:radial-gradient(circle at 50% 38%,transparent 10%,rgba(25,3,28,.15) 58%,rgba(15,2,18,.5));
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(
+    circle at 50% 38%,
+    transparent 10%,
+    rgba(25,3,28,.15) 58%,
+    rgba(15,2,18,.5)
+  );
   pointer-events:none;
 }
 
-.hand{font-family:"Segoe Print","Comic Sans MS",cursive;color:#ffd5ec;text-shadow:0 0 8px #ff4aa5}
-.note-left,.note-right,.note-bottom,.heart{position:absolute;z-index:2}
-.note-left{left:4.5%;top:7%;font-size:clamp(22px,3.4vw,34px);line-height:.98;transform:rotate(-3deg)}
-.note-left span{display:block;text-align:center;font-size:34px;margin-top:8px}
-.note-right{right:3%;bottom:13%;font-size:clamp(22px,3.3vw,32px);line-height:1;text-align:center;transform:rotate(3deg)}
-.note-right span{display:block;font-size:34px;margin-top:5px}
-.note-bottom{left:4.5%;bottom:11%;font-size:clamp(19px,2.8vw,27px);line-height:1.03}
-.heart{font-family:Arial;color:#ff3d9c;font-size:70px;text-shadow:0 0 13px #ff2b91;opacity:.8}
-.h1{right:3%;top:3%;font-size:68px}
-.h2{left:-5%;top:38%;font-size:82px}
-.h3{right:-5%;top:23%;font-size:55px}
+.hand{
+  font-family:"Segoe Print","Comic Sans MS",cursive;
+  color:#ffd5ec;
+  text-shadow:0 0 8px #ff4aa5;
+}
+
+.note-left,
+.note-right,
+.note-bottom,
+.heart{
+  position:absolute;
+  z-index:2;
+}
+
+.note-left{
+  left:4.5%;
+  top:7%;
+  font-size:clamp(22px,3.4vw,34px);
+  line-height:.98;
+  transform:rotate(-3deg);
+}
+
+.note-left span{
+  display:block;
+  text-align:center;
+  font-size:34px;
+  margin-top:8px;
+}
+
+.note-right{
+  right:3%;
+  bottom:13%;
+  font-size:clamp(22px,3.3vw,32px);
+  line-height:1;
+  text-align:center;
+  transform:rotate(3deg);
+}
+
+.note-right span{
+  display:block;
+  font-size:34px;
+  margin-top:5px;
+}
+
+.note-bottom{
+  left:4.5%;
+  bottom:11%;
+  font-size:clamp(19px,2.8vw,27px);
+  line-height:1.03;
+}
+
+.heart{
+  font-family:Arial;
+  color:#ff3d9c;
+  font-size:70px;
+  text-shadow:0 0 13px #ff2b91;
+  opacity:.8;
+}
+
+.h1{
+  right:3%;
+  top:3%;
+  font-size:68px;
+}
+
+.h2{
+  left:-5%;
+  top:38%;
+  font-size:82px;
+}
+
+.h3{
+  right:-5%;
+  top:23%;
+  font-size:55px;
+}
+
+
+/* =========================
+   ÁREA DA SURPRESA
+========================= */
 
 .content{
-  position:absolute;z-index:4;
-  left:50%;bottom:5.5%;
+  position:absolute;
+  z-index:4;
+  left:50%;
+  bottom:5.5%;
   transform:translateX(-50%);
   width:min(540px,86vw);
   text-align:center;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
 }
+
 .surprise-title{
   font-size:clamp(14px,2.8vw,19px);
   font-weight:700;
-  margin-bottom:12px;
+  margin-bottom:8px;
   text-shadow:0 2px 7px #000;
 }
+
+.arrow{
+  font-size:29px;
+  line-height:1;
+  margin:0 0 12px;
+}
+
 .open{
-  width:100%;height:62px;border:0;border-radius:999px;
+  order:3;
+  width:100%;
+  height:62px;
+  border:0;
+  border-radius:999px;
   background:linear-gradient(90deg,#e91682,#ff3fa2);
-  color:#fff;font-size:clamp(16px,3vw,20px);font-weight:700;
-  box-shadow:0 0 12px #ff43a3,0 8px 25px rgba(0,0,0,.45);
+  color:#fff;
+  font-size:clamp(16px,3vw,20px);
+  font-weight:700;
+  box-shadow:
+    0 0 12px #ff43a3,
+    0 8px 25px rgba(0,0,0,.45);
   cursor:pointer;
 }
-.open:active{transform:scale(.98)}
-.gift{font-size:22px;margin-right:9px}
-.arrow{font-size:29px;margin-top:7px;line-height:1}
+
+.open:active{
+  transform:scale(.98);
+}
+
+.gift{
+  font-size:22px;
+  margin-right:9px;
+}
+
+
+/* =========================
+   POPUP
+========================= */
 
 .overlay{
-  position:fixed;inset:0;z-index:20;
-  display:flex;align-items:center;justify-content:center;
-  padding:16px;background:rgba(17,3,19,.68);
-  opacity:0;visibility:hidden;transition:.3s;
+  position:fixed;
+  inset:0;
+  z-index:20;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:16px;
+  background:rgba(17,3,19,.68);
+  opacity:0;
+  visibility:hidden;
+  transition:.3s;
 }
-.overlay.show{opacity:1;visibility:visible}
+
+.overlay.show{
+  opacity:1;
+  visibility:visible;
+}
+
 .popup{
   width:min(520px,92vw);
-  max-height:86vh;overflow:auto;
+  max-height:86vh;
+  overflow:auto;
   padding:25px 22px 22px;
-  border-radius:28px;text-align:center;
+  border-radius:28px;
+  text-align:center;
   background:linear-gradient(145deg,#fff8fb,#ffe5f0);
   color:#30202b;
   border:2px solid rgba(255,255,255,.9);
-  box-shadow:0 0 20px #ff72bb,0 25px 65px rgba(0,0,0,.55);
+  box-shadow:
+    0 0 20px #ff72bb,
+    0 25px 65px rgba(0,0,0,.55);
   transform:scale(.72) translateY(30px);
   transition:.45s cubic-bezier(.17,.89,.32,1.25);
 }
-.overlay.show .popup{transform:scale(1) translateY(0)}
-.close-x{position:absolute;right:16px;top:10px;border:0;background:none;font-size:31px;cursor:pointer;color:#342431}
-.cake{font-size:48px}
+
+.overlay.show .popup{
+  transform:scale(1) translateY(0);
+}
+
+.close-x{
+  position:absolute;
+  right:16px;
+  top:10px;
+  border:0;
+  background:none;
+  font-size:31px;
+  cursor:pointer;
+  color:#342431;
+}
+
+.cake{
+  font-size:48px;
+}
+
 .popup h1{
   margin:5px 0 20px;
   font-family:"Segoe Print","Comic Sans MS",cursive;
   font-size:clamp(42px,9vw,58px);
-  line-height:.88;color:#b51c69;
+  line-height:.88;
+  color:#b51c69;
 }
-.message{font-size:17px;line-height:1.48;margin-bottom:16px}
-.final{font-weight:700;color:#b51c69;margin-bottom:18px}
-.close{border:0;border-radius:999px;padding:14px 45px;background:#d51a79;color:white;font-size:17px;font-weight:700;box-shadow:0 0 15px #e83c9a;cursor:pointer}
-#confetti{position:fixed;inset:0;z-index:30;pointer-events:none;overflow:hidden}
-.conf{position:absolute;top:-20px;width:9px;height:14px;border-radius:2px;animation:fall 4s linear forwards}
-@keyframes fall{to{transform:translate3d(var(--x),110vh,0) rotate(720deg)}}
+
+.message{
+  font-size:17px;
+  line-height:1.48;
+  margin-bottom:16px;
+}
+
+.final{
+  font-weight:700;
+  color:#b51c69;
+  margin-bottom:18px;
+}
+
+.close{
+  border:0;
+  border-radius:999px;
+  padding:14px 45px;
+  background:#d51a79;
+  color:white;
+  font-size:17px;
+  font-weight:700;
+  box-shadow:0 0 15px #e83c9a;
+  cursor:pointer;
+}
+
+
+/* =========================
+   CONFETES
+========================= */
+
+#confetti{
+  position:fixed;
+  inset:0;
+  z-index:30;
+  pointer-events:none;
+  overflow:hidden;
+}
+
+.conf{
+  position:absolute;
+  top:-20px;
+  width:9px;
+  height:14px;
+  border-radius:2px;
+  animation:fall 4s linear forwards;
+}
+
+@keyframes fall{
+  to{
+    transform:translate3d(var(--x),110vh,0) rotate(720deg);
+  }
+}
+
+
+/* =========================
+   CELULAR
+========================= */
 
 @media (max-width:600px){
-  .page{background-position:center center}
-  .note-left{top:6.5%;left:4%;font-size:22px}
-  .note-left span{font-size:30px}
-  .h1{top:3%;right:2%;font-size:57px}
-  .h2{left:-10%;top:39%;font-size:65px}
-  .h3{right:-10%;top:25%;font-size:48px}
+
+  .page{
+    background-position:center center;
+  }
+
+  .note-left{
+    top:6.5%;
+    left:4%;
+    font-size:22px;
+  }
+
+  .note-left span{
+    font-size:30px;
+  }
+
+  .h1{
+    top:3%;
+    right:2%;
+    font-size:57px;
+  }
+
+  .h2{
+    left:-10%;
+    top:39%;
+    font-size:65px;
+  }
+
+  .h3{
+    right:-10%;
+    top:25%;
+    font-size:48px;
+  }
+
   .note-bottom{
-    left:4%;bottom:14%;
-    width:110px;font-size:18px;
+    left:4%;
+    bottom:14%;
+    width:110px;
+    font-size:18px;
   }
+
   .note-right{
-    right:3%;bottom:14%;
-    width:105px;font-size:21px;
+    right:3%;
+    bottom:14%;
+    width:105px;
+    font-size:21px;
   }
+
   .content{
-    position:absolute;
-    z-index:4;
     left:50%;
     bottom:5.5%;
-    transform:translateX(-50%);
-    width:min(540px,86vw);
-    text-align:center;
-
-    display:flex;
-    flex-direction:column;
-    align-items:center;
+    width:88vw;
   }
 
   .surprise-title{
-    order:1;
-    font-size:clamp(14px,2.8vw,19px);
-    font-weight:700;
+    font-size:14px;
     margin-bottom:8px;
-    text-shadow:0 2px 7px #000;
   }
 
   .arrow{
-    order:2;
     font-size:29px;
     line-height:1;
-    margin:0 0 4px;
-    position:static;
+    margin:0 0 12px;
   }
 
   .open{
-    order:3;
     width:100%;
-    height:62px;
-    border:0;
-    border-radius:999px;
-    background:linear-gradient(90deg,#e91682,#ff3fa2);
-    color:#fff;
-    font-size:clamp(16px,3vw,20px);
-    font-weight:700;
-    box-shadow:0 0 12px #ff43a3,0 8px 25px rgba(0,0,0,.45);
-    cursor:pointer;
+    height:58px;
+    font-size:17px;
   }
 
-  .open:active{transform:scale(.98)}
-  .gift{font-size:22px;margin-right:9px}
+  .gift{
+    font-size:22px;
+    margin-right:9px;
+  }
 }
 
+
+/* =========================
+   CELULAR COM POUCA ALTURA
+========================= */
+
 @media (max-height:700px) and (max-width:600px){
-  .note-left{top:4%}
-  .note-bottom,.note-right{bottom:12%}
-  .content{bottom:3%}
-  .open{height:54px}
-  .popup{max-height:90vh}
+
+  .note-left{
+    top:4%;
+  }
+
+  .note-bottom,
+  .note-right{
+    bottom:12%;
+  }
+
+  .content{
+    bottom:3%;
+  }
+
+  .open{
+    height:54px;
+  }
+
+  .popup{
+    max-height:90vh;
+  }
 }
 </style>
 </head>
+
+
 <body>
+
 <div class="page">
+
   <div class="heart h1">♡</div>
   <div class="heart h2">♡</div>
   <div class="heart h3">♡</div>
 
-  <div class="hand note-left">Você<br>recebeu<br>uma<br>surpresa!<span>♡</span></div>
-  <div class="hand note-bottom">Mais vida<br>Mais conquistas<br>Mais motivos<br>para sorrir ♡</div>
-  <div class="hand note-right">Hoje é<br>seu dia!<span>♡</span></div>
+  <div class="hand note-left">
+    Você<br>
+    recebeu<br>
+    uma<br>
+    surpresa!
+    <span>♡</span>
+  </div>
+
+  <div class="hand note-bottom">
+    Mais vida<br>
+    Mais conquistas<br>
+    Mais motivos<br>
+    para sorrir ♡
+  </div>
+
+  <div class="hand note-right">
+    Hoje é<br>
+    seu dia!
+    <span>♡</span>
+  </div>
+
 
   <div class="content">
-    <div class="surprise-title">Tem uma coisinha esperando por você 👀</div>
-    <div class="hand arrow">Clique aqui ↓</div>
-    <button class="open" id="openBtn"><span class="gift">🎁</span>ABRIR SURPRESA</button>
+
+    <div class="surprise-title">
+      Tem uma coisinha esperando por você 👀
+    </div>
+
+    <div class="hand arrow">
+      Clique aqui ↓
+    </div>
+
+    <button class="open" id="openBtn">
+      <span class="gift">🎁</span>
+      ABRIR SURPRESA
+    </button>
+
   </div>
+
 </div>
+
 
 <div class="overlay" id="overlay">
+
   <div class="popup">
-    <button class="close-x" id="xBtn">×</button>
-    <div class="cake">🎂</div>
-    <h1>Feliz<br>Aniversário! ♡</h1>
+
+    <button class="close-x" id="xBtn">
+      ×
+    </button>
+
+    <div class="cake">
+      🎂
+    </div>
+
+    <h1>
+      Feliz<br>
+      Aniversário! ♡
+    </h1>
+
     <div class="message">
+
       Que seu dia seja tão especial quanto você é!<br>
+
       Que nunca falte alegria, paz, sorrisos e tudo aquilo
-      que te faz bem. ✨<br><br>
-      <strong> Que seu dia seja incrível, cheio de alegria,
-        sorrisos e momentos especiais! ✨<br><br>
+      que te faz bem. ✨
+
+      <br><br>
+
+      <strong>
+
+        Que seu dia seja incrível, cheio de alegria,
+        sorrisos e momentos especiais! ✨
+
+        <br><br>
+
         Que essa nova fase venha cheia de coisas boas
         e que você continue sendo essa pessoa maravilhosa. 💕
-</strong>
+
+      </strong>
+
     </div>
-    <div class="final">Você merece tudo de bom! ♡</div>
-    <button class="close" id="closeBtn">Fechar ♡</button>
+
+    <div class="final">
+      Você merece tudo de bom! ♡
+    </div>
+
+    <button class="close" id="closeBtn">
+      Fechar ♡
+    </button>
+
   </div>
+
 </div>
+
+
 <div id="confetti"></div>
 
+
 <script>
-const overlay=document.getElementById("overlay");
-const confetti=document.getElementById("confetti");
+
+const overlay = document.getElementById("overlay");
+const confetti = document.getElementById("confetti");
 
 function launchConfetti(){
-  confetti.innerHTML="";
-  const colors=["#ff4fa3","#ff8cc6","#ffd166","#fff","#c77dff"];
-  for(let i=0;i<110;i++){
-    const el=document.createElement("span");
-    el.className="conf";
-    el.style.left=Math.random()*100+"vw";
-    el.style.setProperty("--x",(Math.random()*260-130)+"px");
-    el.style.animationDuration=(2.8+Math.random()*2.7)+"s";
-    el.style.animationDelay=(Math.random()*.5)+"s";
-    el.style.background=colors[Math.floor(Math.random()*colors.length)];
-    if(Math.random()>.55)el.style.borderRadius="50%";
+
+  confetti.innerHTML = "";
+
+  const colors = [
+    "#ff4fa3",
+    "#ff8cc6",
+    "#ffd166",
+    "#fff",
+    "#c77dff"
+  ];
+
+  for(let i = 0; i < 110; i++){
+
+    const el = document.createElement("span");
+
+    el.className = "conf";
+
+    el.style.left = Math.random() * 100 + "vw";
+
+    el.style.setProperty(
+      "--x",
+      (Math.random() * 260 - 130) + "px"
+    );
+
+    el.style.animationDuration =
+      (2.8 + Math.random() * 2.7) + "s";
+
+    el.style.animationDelay =
+      (Math.random() * .5) + "s";
+
+    el.style.background =
+      colors[Math.floor(Math.random() * colors.length)];
+
+    if(Math.random() > .55){
+      el.style.borderRadius = "50%";
+    }
+
     confetti.appendChild(el);
   }
-  setTimeout(()=>confetti.innerHTML="",6000);
+
+  setTimeout(() => {
+    confetti.innerHTML = "";
+  }, 6000);
 }
-function closePopup(){overlay.classList.remove("show")}
-document.getElementById("openBtn").onclick=()=>{overlay.classList.add("show");launchConfetti()};
-document.getElementById("closeBtn").onclick=closePopup;
-document.getElementById("xBtn").onclick=closePopup;
-overlay.onclick=e=>{if(e.target===overlay)closePopup()};
-document.onkeydown=e=>{if(e.key==="Escape")closePopup()};
+
+
+function closePopup(){
+  overlay.classList.remove("show");
+}
+
+
+document.getElementById("openBtn").onclick = () => {
+
+  overlay.classList.add("show");
+
+  launchConfetti();
+
+};
+
+
+document.getElementById("closeBtn").onclick = closePopup;
+
+document.getElementById("xBtn").onclick = closePopup;
+
+
+overlay.onclick = e => {
+
+  if(e.target === overlay){
+    closePopup();
+  }
+
+};
+
+
+document.onkeydown = e => {
+
+  if(e.key === "Escape"){
+    closePopup();
+  }
+
+};
+
 </script>
+
 </body>
 </html>
